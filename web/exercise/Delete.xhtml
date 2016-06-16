@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head>
+        <title>MyShak Home</title>
+        <h:outputStylesheet name="css/menu.css"/>
+        <h:outputStylesheet name="css/table-style.css"/>
+    </h:head>
+    <h:body>
+        
+        <div id="header" border="10">
+            <div id="header_button"> <br />Myshak</div>
+        </div>      
+        
+        <br />
+            <div>
+
+                <h:form>     
+                    <h:inputText binding="#{input1}" />
+                    <h:commandButton value="Delete" action="#{exercise.deleteExercise(input1.value)}" />
+                </h:form>
+            </div>
+        
+        <div >
+            <br /><br /><br /><br /><br /><br />
+
+            <h:dataTable value="#{exercise.listAllOpen()}" var="o"
+                         styleClass="order-table"
+                         headerClass="order-table-header"
+                         rowClasses="order-table-odd-row,order-table-even-row"
+                         >
+
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Exercise Number</f:facet>
+                    <!-- row record -->
+                    <h:outputText value="#{o.idexercise}" />
+
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">UC</f:facet>
+                    <h:outputText value="#{o.uc}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Tag</f:facet>
+                    <h:outputText value="#{o.tag}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                    <h:outputText value="#{o.title}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Assigned solutions</f:facet>
+                    <h:outputText value="#{o.tsolution}" />
+                </h:column>
+
+            </h:dataTable>
+        </div>      
+
+        <!--        Hello from Facelets
+                <br />
+                <h:link  ="/exercise/List" value="Show All Exercise Items"/>
+                <br />
+                <h:link outcome="/solution/List" value="Show All Solution Items"/>
+                <br />
+                <h:link outcome="/uc/List" value="Show All Uc Items"/>
+                <br />
+                <h:link outcome="/user/List" value="Show All User Items"/>-->
+
+    </h:body>
+</html>
+

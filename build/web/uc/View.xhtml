@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUcTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUcLabel_iduc}"/>
+                    <h:outputText value="#{ucController.selected.iduc}" title="#{bundle.ViewUcTitle_iduc}"/>
+                    <h:outputText value="#{bundle.ViewUcLabel_name}"/>
+                    <h:outputText value="#{ucController.selected.name}" title="#{bundle.ViewUcTitle_name}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{ucController.destroyAndView}" value="#{bundle.ViewUcDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUcEditLink}"/>
+                <br />
+                <h:commandLink action="#{ucController.prepareCreate}" value="#{bundle.ViewUcCreateLink}" />
+                <br />
+                <h:commandLink action="#{ucController.prepareList}" value="#{bundle.ViewUcShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUcIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
