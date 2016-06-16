@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditExerciseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditExerciseLabel_idexercise}" for="idexercise" />
+                    <h:inputText id="idexercise" value="#{exerciseController.selected.idexercise}" title="#{bundle.EditExerciseTitle_idexercise}" required="true" requiredMessage="#{bundle.EditExerciseRequiredMessage_idexercise}"/>
+                    <h:outputLabel value="#{bundle.EditExerciseLabel_uc}" for="uc" />
+                    <h:inputText id="uc" value="#{exerciseController.selected.uc}" title="#{bundle.EditExerciseTitle_uc}" />
+                    <h:outputLabel value="#{bundle.EditExerciseLabel_tag}" for="tag" />
+                    <h:inputText id="tag" value="#{exerciseController.selected.tag}" title="#{bundle.EditExerciseTitle_tag}" />
+                    <h:outputLabel value="#{bundle.EditExerciseLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{exerciseController.selected.title}" title="#{bundle.EditExerciseTitle_title}" />
+                    <h:outputLabel value="#{bundle.EditExerciseLabel_question}" for="question" />
+                    <h:inputText id="question" value="#{exerciseController.selected.question}" title="#{bundle.EditExerciseTitle_question}" />
+                    <h:outputLabel value="#{bundle.EditExerciseLabel_tsolution}" for="tsolution" />
+                    <h:inputText id="tsolution" value="#{exerciseController.selected.tsolution}" title="#{bundle.EditExerciseTitle_tsolution}" />
+                    <h:outputLabel value="#{bundle.EditExerciseLabel_checkb}" for="checkb" />
+                    <h:inputText id="checkb" value="#{exerciseController.selected.checkb}" title="#{bundle.EditExerciseTitle_checkb}" />
+                </h:panelGrid>
+                <h:commandLink action="#{exerciseController.update}" value="#{bundle.EditExerciseSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditExerciseViewLink}"/>
+                <br />
+                <h:commandLink action="#{exerciseController.prepareList}" value="#{bundle.EditExerciseShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditExerciseIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
